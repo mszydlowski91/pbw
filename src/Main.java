@@ -18,22 +18,14 @@ public class Main extends JFrame{
         constraints.insets = new Insets(50,50,50,50);
         constraints.ipadx = 10;
         constraints.ipady = 10;
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-       // JLabel jLabel = new JLabel(new ImageIcon(image));
-        this.add(new label(),constraints);
-        //jLabel.add
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        this.add(new label(),constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        this.add(new label(),constraints);
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        this.add(new label(),constraints);
-
         
+        for (int i = 0; i < 4; i++) {
+            constraints.gridx = i%2;
+            constraints.gridy = i/2;
+            System.out.println(constraints.gridx+" "+constraints.gridy);
+            this.add(new label(),constraints);
+        }
+
         this.setMinimumSize(new Dimension(WIDTH,HEIGHT));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
