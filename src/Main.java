@@ -32,7 +32,8 @@ public class Main extends JFrame{
     }
     
     private class label extends JLabel {
-        String path = "/home/j/workspace/java/pbw/includes/bird.jpg";
+        //String path = "/home/j/workspace/java/pbw/includes/bird.jpg";
+        String path = "includes/bird.jpg";
 
         public label() {
             ImageIcon imageIcon = new ImageIcon(path);
@@ -54,4 +55,5 @@ public class Main extends JFrame{
         new Main();
     }
 }
+
 

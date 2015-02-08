@@ -1,3 +1,6 @@
 out/
 pbw.iml
 .idea/
+/bin/
+.classpath
+.project
