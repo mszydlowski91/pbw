@@ -26,8 +26,8 @@ public class Main extends JFrame{
         for (int i = 0; i < 4; i++) {
             constraints.gridx = i%2;
             constraints.gridy = i/2;
-            System.out.println(constraints.gridx+" "+constraints.gridy);
-            this.add(new label(),constraints);
+            this.add(new label(), constraints);
+
         }
 
         this.setMinimumSize(new Dimension(WIDTH,HEIGHT));
@@ -42,8 +42,8 @@ public class Main extends JFrame{
         public label() {
             ImageIcon imageIcon = new ImageIcon(path);
           //  thi
-           // Image image = Toolkit.getDefaultToolkit().getImage(path).getScaledInstance(200,150, Image.SCALE_SMOOTH);
-            this.setIcon(imageIcon);
+            Image image = Toolkit.getDefaultToolkit().getImage(path).getScaledInstance(200,150, Image.SCALE_SMOOTH);
+            this.setIcon(new ImageIcon(image));
             this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -56,7 +56,6 @@ public class Main extends JFrame{
     }
     
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         new Main();
     }
 }
