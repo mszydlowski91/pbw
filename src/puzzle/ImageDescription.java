@@ -1,4 +1,5 @@
 package puzzle;
+
 /*
  * A puzzle game written in Java.
  *
@@ -14,30 +15,27 @@ package puzzle;
  *
  */
 
-
 import javax.swing.*;
 
 /**
  *
  */
-public class ImageDescription
-{
- public ImageIcon imageIcon        = null;
- public ImageIcon imageIcon_scaled = null;
- public String name                = null;
+public class ImageDescription {
+	public ImageIcon imageIcon = null;
+	public ImageIcon imageIcon_scaled = null;
+	public String name = null;
 
- /**
+	/**
   *
   */
- public ImageDescription(ImageIcon imageIcon, ImageIcon imageIcon_scaled, String name)
-  {
-  this.imageIcon        = imageIcon;
-  this.imageIcon_scaled = imageIcon_scaled;
-  this.name             = name;
-  }
+	public ImageDescription(ImageIcon imageIcon, ImageIcon imageIcon_scaled,
+			String name) {
+		this.imageIcon = imageIcon;
+		this.imageIcon_scaled = imageIcon_scaled;
+		this.name = name;
+	}
 
- public String toString()
-  {
-  return name;
-  }
+	public String toString() {
+		return name;
+	}
 }

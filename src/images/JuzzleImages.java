@@ -54,8 +54,8 @@ public class JuzzleImages {
 					file = line.substring(0, sep);
 					name = line.substring(sep + 1, line.length());
 				}
-				System.out.println(file + ":" + name);
-				ii = new ImageIcon(thisClass.getResource("bird.jpg"));
+				System.out.println(file);
+				ii = new ImageIcon(thisClass.getResource(file));
 				iis = scaleIcon(ii, 80);
 				vector.addElement(new ImageDescription(ii, iis, name));
 			}

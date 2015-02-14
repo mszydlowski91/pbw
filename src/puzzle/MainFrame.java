@@ -1,4 +1,5 @@
 package puzzle;
+
 /*
  * A puzzle game written in Java.
  *
@@ -14,8 +15,6 @@ package puzzle;
  *
  */
 
-
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -25,34 +24,32 @@ import javax.swing.border.*;
 /**
  *
  */
-public class MainFrame extends JFrame
-{
- protected JuzzlePanel juzzlePanel = null;
+public class MainFrame extends JFrame {
+	protected JuzzlePanel juzzlePanel = null;
 
- /**
+	/**
   *
   */
- public MainFrame()
-  {
-  super("Juzzle [version " + JuzzlePanel.version + "]");
+	public MainFrame() {
+		super("Juzzle [version " + JuzzlePanel.version + "]");
 
-  Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
-  int w = screen.width  - 50;
-  int h = screen.height - 50;
+		int w = screen.width - 50;
+		int h = screen.height - 50;
 
-  setSize(w, h);
-  setLocation((screen.width - w)/2, (screen.height - h)/2);
+		setSize(w, h);
+		setLocation((screen.width - w) / 2, (screen.height - h) / 2);
 
-  juzzlePanel = new JuzzlePanel();
+		juzzlePanel = new JuzzlePanel();
 
-  Container contentPane = getContentPane();
-  contentPane.add(juzzlePanel);
+		Container contentPane = getContentPane();
+		contentPane.add(juzzlePanel);
 
-  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
 
-  juzzlePanel.revalidate();
-  juzzlePanel.startGame();
-  }
+		juzzlePanel.revalidate();
+		juzzlePanel.startGame();
+	}
 }

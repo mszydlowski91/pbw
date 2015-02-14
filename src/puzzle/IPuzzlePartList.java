@@ -1,4 +1,5 @@
 package puzzle;
+
 /*
  * A puzzle game written in Java.
  *
@@ -14,23 +15,29 @@ package puzzle;
  *
  */
 
-
-
 import java.awt.*;
 
 /**
  *
  */
-public interface IPuzzlePartList
-{
- public int getPartsCount();
- public int getSolvedPartsCount();
- public PuzzlePartList.PuzzlePart getFirstNode();
- public PuzzlePartList.PuzzlePart [] getPartArray();
- public boolean isSelectedPart(PuzzlePartList.PuzzlePart part);
- public boolean selectPart(Point point);
- public void deselectPart();
- public void setRedrawRect(Rectangle repaintRect);
- public void moveLocation(int dx, int dy);
- public void updatePart();
+public interface IPuzzlePartList {
+	public int getPartsCount();
+
+	public int getSolvedPartsCount();
+
+	public PuzzlePartList.PuzzlePart getFirstNode();
+
+	public PuzzlePartList.PuzzlePart[] getPartArray();
+
+	public boolean isSelectedPart(PuzzlePartList.PuzzlePart part);
+
+	public boolean selectPart(Point point);
+
+	public void deselectPart();
+
+	public void setRedrawRect(Rectangle repaintRect);
+
+	public void moveLocation(int dx, int dy);
+
+	public void updatePart();
 }

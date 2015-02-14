@@ -1,4 +1,5 @@
 package puzzle;
+
 /*
  * A puzzle game written in Java.
  *
@@ -14,7 +15,6 @@ package puzzle;
  *
  */
 
-
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.*;
@@ -22,61 +22,52 @@ import java.awt.image.*;
 /**
  *
  */
-public class PuzzlePaint implements Paint, PaintContext
-{
- protected BufferedImage bimage = null;
- protected Rectangle viewRect   = new Rectangle();
- protected Rectangle userBounds = new Rectangle();
+public class PuzzlePaint implements Paint, PaintContext {
+	protected BufferedImage bimage = null;
+	protected Rectangle viewRect = new Rectangle();
+	protected Rectangle userBounds = new Rectangle();
 
- /**
+	/**
   *
   */
- public PuzzlePaint(BufferedImage textur, Rectangle viewRect)
-  {
-  this.bimage = textur;
-  this.viewRect.setRect(viewRect);
-  }
+	public PuzzlePaint(BufferedImage textur, Rectangle viewRect) {
+		this.bimage = textur;
+		this.viewRect.setRect(viewRect);
+	}
 
- public void setViewRect(Rectangle viewRect)
-  {
-  this.viewRect.setRect(viewRect);
-  }
+	public void setViewRect(Rectangle viewRect) {
+		this.viewRect.setRect(viewRect);
+	}
 
- public PaintContext createContext(ColorModel cm,
-                                   Rectangle deviceBounds,
-                                   Rectangle2D userBounds,
-                                   AffineTransform xform,
-                                   RenderingHints hints)
-  {
-//  if(deviceBounds.equals(userBounds))
-//    {
-//    System.out.println("deviceBounds: " + deviceBounds);
-//    System.out.println("userBounds:   " + userBounds);
-//    }
-  this.userBounds.setRect(deviceBounds);
-  return this;
-  }
+	public PaintContext createContext(ColorModel cm, Rectangle deviceBounds,
+			Rectangle2D userBounds, AffineTransform xform, RenderingHints hints) {
+		// if(deviceBounds.equals(userBounds))
+		// {
+		// System.out.println("deviceBounds: " + deviceBounds);
+		// System.out.println("userBounds:   " + userBounds);
+		// }
+		this.userBounds.setRect(deviceBounds);
+		return this;
+	}
 
- public int getTransparency()
-  {
-  return OPAQUE;
-  }
+	public int getTransparency() {
+		return OPAQUE;
+	}
 
- public void dispose() {}
+	public void dispose() {
+	}
 
- public ColorModel getColorModel()
-  {
-  return bimage.getColorModel();
-  }
+	public ColorModel getColorModel() {
+		return bimage.getColorModel();
+	}
 
- public Raster getRaster(int x, int y, int w, int h)
-  {
-  int x2 = x - userBounds.x + viewRect.x;
-  int y2 = y - userBounds.y + viewRect.y;
-//  if((x2) < 0) x2 = 0;
-//  if((y2) < 0) y2 = 0;
-//  if((x2 + w) > bimage.getWidth())  x2 = 0;
-//  if((y2 + h) > bimage.getHeight()) y2 = 0;
-  return bimage.getRaster().createChild(x2, y2, w, h, 0, 0, null);
-  }
+	public Raster getRaster(int x, int y, int w, int h) {
+		int x2 = x - userBounds.x + viewRect.x;
+		int y2 = y - userBounds.y + viewRect.y;
+		// if((x2) < 0) x2 = 0;
+		// if((y2) < 0) y2 = 0;
+		// if((x2 + w) > bimage.getWidth()) x2 = 0;
+		// if((y2 + h) > bimage.getHeight()) y2 = 0;
+		return bimage.getRaster().createChild(x2, y2, w, h, 0, 0, null);
+	}
 }
