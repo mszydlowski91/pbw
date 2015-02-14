@@ -8,7 +8,7 @@ public class Main extends JFrame{
     int HEIGHT = 600;
     
     public Main() {
-        super("Zasrane PBW");
+        super("PBW");
         
         this.setLayout(new GridBagLayout());
         
