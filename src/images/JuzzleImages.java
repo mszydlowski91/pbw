@@ -22,7 +22,7 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 
-import main.ImageDescription;
+import puzzle.ImageDescription;
 
 /**
  *

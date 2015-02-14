@@ -1,3 +1,4 @@
+package main;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
@@ -17,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class PuzzleWindow extends JFrame implements ActionListener {
+public class MainWindow extends JFrame implements ActionListener {
 
 	private JPanel centerPanel;
 	private JButton button;
@@ -27,7 +28,7 @@ public class PuzzleWindow extends JFrame implements ActionListener {
 	int[][] pos;
 	int width, height;
 
-	public PuzzleWindow() {
+	public MainWindow() {
 
 		initUI();
 	}
@@ -40,7 +41,7 @@ public class PuzzleWindow extends JFrame implements ActionListener {
 		centerPanel = new JPanel();
 		centerPanel.setLayout(new GridLayout(4, 4, 0, 0));
 
-		ImageIcon sid = new ImageIcon(PuzzleWindow.class.getResource("bird.jpg"));
+		ImageIcon sid = new ImageIcon(MainWindow.class.getResource("bird.jpg"));
 		source = sid.getImage();
 
 		width = sid.getIconWidth();
@@ -131,7 +132,7 @@ public class PuzzleWindow extends JFrame implements ActionListener {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			public void run() {
-				PuzzleWindow puzzle = new PuzzleWindow();
+				MainWindow puzzle = new MainWindow();
 				puzzle.setVisible(true);
 			}
 		});

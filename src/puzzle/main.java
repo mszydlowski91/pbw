@@ -1,4 +1,4 @@
-package main;
+package puzzle;
 /*
  * A puzzle game written in Java.
  *
