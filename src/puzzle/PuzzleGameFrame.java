@@ -24,14 +24,14 @@ import javax.swing.border.*;
 /**
  *
  */
-public class MainFrame extends JFrame {
+public class PuzzleGameFrame extends JFrame {
 	protected JuzzlePanel juzzlePanel = null;
 
 	/**
   *
   */
-	public MainFrame() {
-		super("Juzzle [version " + JuzzlePanel.version + "]");
+	public PuzzleGameFrame() {
+		super("TechnoPuzzle");
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 

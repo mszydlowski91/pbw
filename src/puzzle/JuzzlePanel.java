@@ -85,7 +85,7 @@ public class JuzzlePanel extends JDesktopPane {
 		JMenuBar jmb = new JMenuBar();
 		JMenu jm = null;
 
-		jm = new JMenu("Game");
+		jm = new JMenu("Gra");
 		// jm.add(createMenuItem("New", "new.gif"));
 		// jm.add(createMenuItem("Open", "open.gif"));
 		// jm.add(createMenuItem("Reset", "reset.gif"));
@@ -95,10 +95,10 @@ public class JuzzlePanel extends JDesktopPane {
 		// jm.add(createMenuItem("Quit", "quit.gif"));
 		jmb.add(jm);
 
-		jm = new JMenu("View");
+		jm = new JMenu("Widok");
 		jm.add(createMenuItem2("Antialiasing", true));
-		jm.add(createMenuItem2("Outline", true));
-		jm.add(createMenuItem2("Shadow", true));
+		jm.add(createMenuItem2("Kontury", true));
+		jm.add(createMenuItem2("Cieñ", true));
 		jmb.add(jm);
 
 		controlFrame.setJMenuBar(jmb);
@@ -156,22 +156,22 @@ public class JuzzlePanel extends JDesktopPane {
 
 	public class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (e.getActionCommand().equals("New")) {
+			if (e.getActionCommand().equals("Nowa")) {
 				startGame();
-			} else if (e.getActionCommand().equals("Open")) {
+			} else if (e.getActionCommand().equals("Otwórz")) {
 				loadImageForGame();
 			} else if (e.getActionCommand().equals("Reset")) {
 				pzp.resetGame();
 			} else if (e.getActionCommand().equals("About")) {
 				JOptionPane.showMessageDialog(JuzzlePanel.this, ABOUT_TEXT);
-			} else if (e.getActionCommand().equals("Quit")) {
+			} else if (e.getActionCommand().equals("WyjdŸ")) {
 				System.exit(0);
 			} else if (e.getActionCommand().equals("Antialiasing")) {
 				pzp.setAntialiasing(((JCheckBoxMenuItem) e.getSource())
 						.isSelected());
-			} else if (e.getActionCommand().equals("Outline")) {
+			} else if (e.getActionCommand().equals("Kontur")) {
 				pzp.setOutline(((JCheckBoxMenuItem) e.getSource()).isSelected());
-			} else if (e.getActionCommand().equals("Shadow")) {
+			} else if (e.getActionCommand().equals("Cieñ")) {
 				pzp.setShadow(((JCheckBoxMenuItem) e.getSource()).isSelected());
 			}
 		}

@@ -1,7 +1,7 @@
 package main;
 import javax.swing.*;
 
-import puzzle.MainFrame;
+import puzzle.PuzzleGameFrame;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -49,7 +49,7 @@ public class Main extends JFrame{
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
                     //System.out.println("cos sie bedzie otwierac");
-                    new MainFrame();
+                    new PuzzleGameFrame();
                 }
             });
         }

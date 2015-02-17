@@ -70,17 +70,17 @@ public class ControlPanel extends JPanel {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.fill = GridBagConstraints.BOTH;
-		statistic.add(createLabel("Pieces:", JLabel.RIGHT), gbc);
+		statistic.add(createLabel("Czesci:", JLabel.RIGHT), gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
-		statistic.add(createLabel("Solved:", JLabel.RIGHT), gbc);
+		statistic.add(createLabel("Ulozone:", JLabel.RIGHT), gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		gbc.fill = GridBagConstraints.BOTH;
-		statistic.add(createLabel("Time:", JLabel.RIGHT), gbc);
+		statistic.add(createLabel("Czas:", JLabel.RIGHT), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 0;

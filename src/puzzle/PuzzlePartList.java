@@ -15,10 +15,16 @@ package puzzle;
  *
  */
 
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-import java.util.*;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
+import java.awt.geom.GeneralPath;
+import java.awt.image.BufferedImage;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  *
@@ -39,7 +45,15 @@ public class PuzzlePartList implements IPuzzlePartList {
 
 	protected PuzzlePartList.PuzzlePart dragPart = null;
 	protected PuzzlePartList.PuzzlePart dragGroup = null;
-
+	static int id = 1;
+	
+	public int[] diodeArray = {1, 2, 5, 6, 9, 10, 13, 14}; 
+	public int[] microProcArray = {7, 11};
+	public int[] powerArray = {8, 12};
+	public int diodeCount = 0;
+	public int microCount = 0;
+	public int powerCount = 0;
+	
 	/**
   *
   */
@@ -85,12 +99,12 @@ public class PuzzlePartList implements IPuzzlePartList {
 				// 10, i*iw, j*ih, iw, ih);
 				// node = new PuzzlePart(random.nextInt(780)+10,
 				// random.nextInt(780)+10, 0, 0, iw, ih);
-				node = new PuzzlePartList.PuzzlePart(bimage,
+				node = new PuzzlePartList.PuzzlePart(id, bimage,
 						random.nextInt(random_max_x) + 30,
 						random.nextInt(random_max_y) + 30, i * partWidth, j
 								* partHeight, currentImageWidth,
 						currentImageHeight);
-
+				id++;
 				pz_array[k] = node;
 
 				if (j > 0) {
@@ -236,6 +250,8 @@ public class PuzzlePartList implements IPuzzlePartList {
 			node.puzzlePaint.setViewRect(node.boundsImage);
 			// System.out.println(node.locationIn);
 			// System.out.println(node.locationOut);
+			// czyli to idzie rzedami i kolumnami normalnie
+			for(int d = 0; d < pz_array.length; d++) System.out.println(pz_array[d]);
 		}
 	}
 
@@ -507,13 +523,34 @@ public class PuzzlePartList implements IPuzzlePartList {
 		if (puzzleCount == 0)
 			puzzleCount += 1;
 		puzzleCount += 1;
+		
+		
+		if(contains(diodeArray, node.id)){
+			diodeCount++;
+			System.out.println(node.id);
+		}
+		if(diodeCount == 7)
+		{
+			System.out.println("joined");
+			new PopupFrame();
+		}
+				
+		
+		
 	}
+	
+	public boolean contains(final int[] array, final int key) {  
+	     Arrays.sort(array);  
+	     return Arrays.binarySearch(array, key) != -1;  
+	}  
 
 	public static class PuzzlePart {
 		public static final int WEST = 0x01;
 		public static final int EAST = 0x02;
 		public static final int NORTH = 0x04;
 		public static final int SOUTH = 0x08;
+		
+		public int id = 0;
 
 		public Point locationIn = new Point();
 		public Point locationOut = new Point();
@@ -538,12 +575,13 @@ public class PuzzlePartList implements IPuzzlePartList {
 
 		// public int partsInGroup = 1;
 
-		public PuzzlePart(BufferedImage bimage, int lx, int ly, int pix,
+		public PuzzlePart(int id, BufferedImage bimage, int lx, int ly, int pix,
 				int piy, int width, int height) {
 			locationIn.setLocation(lx, ly);
 			boundsImage.setRect(pix, piy, width, height);
 			boundsIn.setRect(pix, piy, width, height);
 			puzzlePaint = new PuzzlePaint(bimage, boundsImage);
+			this.id = id;
 		}
 
 		public void updateLocationOut() {
@@ -552,7 +590,7 @@ public class PuzzlePartList implements IPuzzlePartList {
 		}
 
 		public String toString() {
-			return "PuzzlePart[location: " + locationIn.x + ", " + locationIn.y
+			return "PuzzlePart[id: " + id + "; location: " + locationIn.x + ", " + locationIn.y
 					+ "; rect: " + boundsIn.x + ", " + boundsIn.y + ", "
 					+ boundsIn.width + ", " + boundsIn.height + "]";
 		}

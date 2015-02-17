@@ -54,6 +54,8 @@ public class PuzzlePanel extends JPanel implements MouseListener,
 	protected boolean antialiasing = true;
 	protected boolean outline = true;
 	protected boolean shadow = true;
+	
+	
 
 	/**
   *
