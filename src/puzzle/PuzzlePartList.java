@@ -53,6 +53,10 @@ public class PuzzlePartList implements IPuzzlePartList {
 	public int diodeCount = 0;
 	public int microCount = 0;
 	public int powerCount = 0;
+	public boolean diodeFlag = true;
+	public boolean microFlag = true;
+	public boolean powerFlag = true;
+	
 	
 	/**
   *
@@ -525,14 +529,22 @@ public class PuzzlePartList implements IPuzzlePartList {
 		puzzleCount += 1;
 		
 		
-		if(contains(diodeArray, node.id)){
-			diodeCount++;
-			System.out.println(node.id);
+		if(contains(diodeArray, node.id) && diodeFlag){
+			diodeCount++;			
 		}
-		if(diodeCount == 7)
-		{
-			System.out.println("joined");
+		if(contains(microProcArray, node.id) && microFlag){
+			microCount++;
+		}
+		if(contains(powerArray, node.id) && powerFlag){
+			powerCount++;
+		}
+		if(diodeCount == 7 || microCount == 1 || powerCount == 1)
+		{			
 			new PopupFrame();
+			diodeCount = microCount = powerCount = 0;
+			diodeFlag = false;
+			microFlag = false;
+			powerFlag = false;
 		}
 				
 		
