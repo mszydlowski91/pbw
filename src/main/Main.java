@@ -1,4 +1,8 @@
+package main;
 import javax.swing.*;
+
+import puzzle.PuzzleGameFrame;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -8,7 +12,7 @@ public class Main extends JFrame{
     int HEIGHT = 600;
     
     public Main() {
-        super("Zasrane PBW");
+        super("PBW");
         
         this.setLayout(new GridBagLayout());
         
@@ -44,7 +48,8 @@ public class Main extends JFrame{
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
-                    System.out.println("cos sie bedzie otwierac");
+                    //System.out.println("cos sie bedzie otwierac");
+                    new PuzzleGameFrame();
                 }
             });
         }
