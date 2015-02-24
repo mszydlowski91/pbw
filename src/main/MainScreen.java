@@ -1,10 +1,9 @@
 package main;
 
-import puzzle.PuzzleGameFrame;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +14,6 @@ import java.io.InputStreamReader;
 public class MainScreen extends JFrame {
     int WIDTH = 800;
     int HEIGHT = 600;
-    String[] actions = {"Body parts", "Transistors family", "Hangman", "Puzzle"};
     int highlighted;
     CanvasPanel canvas;
 
@@ -84,7 +82,7 @@ public class MainScreen extends JFrame {
         };
         public Button(final int id) {
 
-            this.setLabel("Button"+id);
+            this.setText("Button"+id);
             this.setBounds(dimButtons[id - 1][0], dimButtons[id - 1][1], dimButtons[id - 1][2], dimButtons[id - 1][3]);
             this.addMouseListener(new MouseAdapter() {
                 @Override
