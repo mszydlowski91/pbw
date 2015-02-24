@@ -540,7 +540,7 @@ public class PuzzlePartList implements IPuzzlePartList {
 		}
 		if(diodeCount == 7 || microCount == 1 || powerCount == 1)
 		{			
-			new PopupFrame();
+			//new PopupFrame();
 			diodeCount = microCount = powerCount = 0;
 			diodeFlag = false;
 			microFlag = false;
