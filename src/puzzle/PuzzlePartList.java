@@ -26,7 +26,11 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.apache.commons.lang3.ArrayUtils;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+import org.apache.commons.lang.ArrayUtils;
 
 /**
  *
@@ -544,19 +548,22 @@ public class PuzzlePartList implements IPuzzlePartList {
 		{	
 			System.out.println("Diodes joined");
 			diodeCount = 0;						
-			diodeFlag = false;			
+			diodeFlag = false;		
+			playSound("applause.wav");
 		}
 		if(microCount == 1)
 		{	
 			System.out.println("Micro joined");
 			microCount = 0;						
 			microFlag = false;			
+			playSound("applause.wav");
 		}
 		if(powerCount == 1)
 		{	
 			System.out.println("Power joined");
 			powerCount = 0;						
-			powerFlag = false;			
+			powerFlag = false;		
+			playSound("applause.wav");
 		}
 		
 		System.out.println("diode parts:" + diodeCount);
@@ -567,6 +574,27 @@ public class PuzzlePartList implements IPuzzlePartList {
 		
 		
 	}
+	
+	
+	public static synchronized void playSound(final String url) {
+		  new Thread(new Runnable() {
+		  // The wrapper thread is unnecessary, unless it blocks on the
+		  // Clip finishing; see comments.
+		    public void run() {
+		      try {
+		        Clip clip = AudioSystem.getClip();
+		        //System.out.println("/sounds/" + url);
+		        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+		          PuzzlePartList.class.getResourceAsStream(url));
+		        
+		        clip.open(inputStream);
+		        clip.start(); 
+		      } catch (Exception e) {
+		        System.err.println(e.getMessage());
+		      }
+		    }
+		  }).start();
+		}
 	
 	public boolean contains(final int[] array, final int key) {  
 	     Arrays.sort(array);  

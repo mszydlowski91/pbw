@@ -15,14 +15,24 @@ package puzzle;
  *
  */
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-import java.util.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.geom.GeneralPath;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -54,8 +64,6 @@ public class PuzzlePanel extends JPanel implements MouseListener,
 	protected boolean antialiasing = true;
 	protected boolean outline = true;
 	protected boolean shadow = true;
-	
-	
 
 	/**
   *
@@ -80,6 +88,7 @@ public class PuzzlePanel extends JPanel implements MouseListener,
 			emptyGame();
 			puzzlePartList = new PuzzlePartList(bimage, x_parts, y_parts,
 					getSize());
+
 			controlPanel.printPieces("" + puzzlePartList.getPartsCount());
 			controlPanel.printSolved("0");
 			controlPanel.startCounter();
@@ -189,11 +198,58 @@ public class PuzzlePanel extends JPanel implements MouseListener,
 			part = part.next;
 		}
 
+		if (((PuzzlePartList) puzzlePartList).microFlag == false) {
+			drawBubble(g2, 2);
+		}
+
 		// g2.setStroke(new BasicStroke(1));
 		// g2.setColor(Color.red);
 		// g2.draw(repaintRect1);
 		// g2.setColor(Color.green);
 		// g2.draw(repaintRect2);
+	}
+
+	public void drawBubble(Graphics2D g2, int type) {
+		int width = 250;
+		int height = 350;
+		int x0 = 0;
+		int y0 = 0;
+		GeneralPath path = new GeneralPath();
+		if (type == 1) {
+			x0 = 300;
+			y0 = 300;
+			g2.setColor(Color.YELLOW);
+		} else if (type == 2) {
+			x0 = 800;
+			y0 = 400;
+			g2.setColor(Color.CYAN);
+		} else if (type == 3) {
+			x0 = 700;
+			y0 = 300;
+			g2.setColor(Color.ORANGE);
+		}
+		path.moveTo(x0 + 5, y0 + 10);
+		path.curveTo(x0 + 5, y0 + 10, x0 + 7, y0 + 5, x0 + 0, y0 + 0);
+		path.curveTo(x0 + 0, y0 + 0, x0 + 12, y0 + 0, x0 + 12, y0 + 5);
+		path.curveTo(x0 + 12, y0 + 5, x0 + 12, y0 + 0, x0 + 20, y0 + 0);
+		path.lineTo(x0 + width - 10, y0 + 0);
+		path.curveTo(x0 + width - 10, y0 + 0, x0 + width, y0 + 0, x0 + width,
+				y0 + 10);
+		path.lineTo(x0 + width, y0 + height - 10);
+		path.curveTo(x0 + width, y0 + height - 10, x0 + width, y0 + height, x0
+				+ width - 10, y0 + height);
+		path.lineTo(x0 + 15, y0 + height);
+		path.curveTo(x0 + 15, y0 + height, x0 + 5, y0 + height, x0 + 5, y0
+				+ height - 10);
+		path.lineTo(x0 + 5, y0 + 15);
+		path.closePath();
+
+		
+
+		g2.fill(path);
+		ImageIcon image = new ImageIcon(this.getClass()
+				.getResource("brain.jpg"));
+		image.paintIcon(this, g2, x0, y0);
 	}
 
 	protected void startDragging(MouseEvent e) {
@@ -254,7 +310,7 @@ public class PuzzlePanel extends JPanel implements MouseListener,
 			startDragging(e);
 		} else {
 			stopDragging(e);
-		}		
+		}
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -266,7 +322,7 @@ public class PuzzlePanel extends JPanel implements MouseListener,
 	public void mousePressed(MouseEvent e) {
 		if (!dragModus2 && !dragModus1) {
 			dragModus2 = true;
-		}		
+		}
 	}
 
 	public void mouseReleased(MouseEvent e) {
