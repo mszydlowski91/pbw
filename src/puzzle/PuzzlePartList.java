@@ -26,6 +26,8 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Random;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 /**
  *
  */
@@ -529,24 +531,39 @@ public class PuzzlePartList implements IPuzzlePartList {
 		puzzleCount += 1;
 		
 		
-		if(contains(diodeArray, node.id) && diodeFlag){
+		if(ArrayUtils.contains(diodeArray, node.id) && diodeFlag){
 			diodeCount++;			
 		}
-		if(contains(microProcArray, node.id) && microFlag){
+		else if(ArrayUtils.contains(microProcArray, node.id) && microFlag){
 			microCount++;
 		}
-		if(contains(powerArray, node.id) && powerFlag){
+		else if(ArrayUtils.contains(powerArray, node.id) && powerFlag){
 			powerCount++;
 		}
-		if(diodeCount == 7 || microCount == 1 || powerCount == 1)
-		{			
-			//new PopupFrame();
-			diodeCount = microCount = powerCount = 0;
-			diodeFlag = false;
-			microFlag = false;
-			powerFlag = false;
+		if(diodeCount == 7)
+		{	
+			System.out.println("Diodes joined");
+			diodeCount = 0;						
+			diodeFlag = false;			
 		}
-				
+		if(microCount == 1)
+		{	
+			System.out.println("Micro joined");
+			microCount = 0;						
+			microFlag = false;			
+		}
+		if(powerCount == 1)
+		{	
+			System.out.println("Power joined");
+			powerCount = 0;						
+			powerFlag = false;			
+		}
+		
+		System.out.println("diode parts:" + diodeCount);
+		System.out.println("micro parts:" + microCount);
+		System.out.println("power parts:" + powerCount);
+	
+		System.out.println("Node:"+node.id);
 		
 		
 	}
