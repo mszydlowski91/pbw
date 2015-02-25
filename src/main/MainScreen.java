@@ -1,12 +1,24 @@
 package main;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+
+import puzzle.PuzzleGameFrame;
 
 /**
  * Created by j on 23.02.15.
@@ -104,9 +116,15 @@ public class MainScreen extends JFrame {
                     super.mouseClicked(e);
                     switch (id) {
                         case 1:
-                            //
+						try {
+						
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
                             break;
                         case 2:
+                        	new PuzzleGameFrame();
                             break;
                         case 3:
                             break;
@@ -117,7 +135,8 @@ public class MainScreen extends JFrame {
         }
         
     }
-
+    
+  
     private class CanvasPanel extends JLabel {//mplements MouseListener {
         int[] dimCloud1 = {300, 0, 300, 300};
         int[] dimCloud2 = {100, 150, 300, 200};
