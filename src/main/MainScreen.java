@@ -1,5 +1,7 @@
 package main;
 
+import hangman.GameHangMan;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
@@ -127,6 +129,7 @@ public class MainScreen extends JFrame {
                         	new PuzzleGameFrame();
                             break;
                         case 3:
+                        	new GameHangMan();
                             break;
                     }
                 }
